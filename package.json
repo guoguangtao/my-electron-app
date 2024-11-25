@@ -6,7 +6,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "electron .",
-    "build": "node-gyp rebuild"
+    "rebuild": "node-gyp rebuild",
+    "dev": "node-gyp build && electron .",
+    "rebuild-and-start": "node-gyp clean && node-gyp configure && node-gyp build && electron ."
   },
   "author": "",
   "license": "MIT",
