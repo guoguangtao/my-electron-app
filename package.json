@@ -5,10 +5,12 @@
   "main": "src/main/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "npm install --save-dev electron && npm install node-gyp --save-dev && npm install minimist --save-dev",
     "start": "electron .",
-    "rebuild": "node-gyp rebuild",
-    "dev": "node-gyp build && electron .",
-    "rebuild-and-start": "node-gyp clean && node-gyp configure && node-gyp build && electron ."
+    "rebuild": "node scripts/node_gyp_configure.js rebuild",
+    "dev": "node scripts/node_gyp_configure.js dev",
+    "release": "node scripts/node_gyp_configure.js release",
+    "rebuild-and-start": "node scripts/node_gyp_configure.js rebuild_and_start && electron ."
   },
   "author": "",
   "license": "MIT",
@@ -17,6 +19,7 @@
   },
   "devDependencies": {
     "electron": "^33.2.0",
-    "node-gyp": "^9.0.0"
+    "minimist": "^1.2.8",
+    "node-gyp": "^9.4.1"
   }
 }

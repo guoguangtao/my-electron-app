@@ -1,6 +1,10 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
 const path = require('path');
-const addon = require(path.resolve(__dirname, '../../build/Release/addon.node'));
+// 获取当前环境变量，默认为 'development'（用于调试模式）
+const buildType = process.env.NODE_ENV === 'production' ? 'Release' : 'Debug';
+// 动态加载相应版本的 `.node` 文件
+const addonPath = path.resolve(__dirname, `../../build/${buildType}/addon.node`);
+const addon = require(addonPath);
 
 let mainWindow;
 
